@@ -68,19 +68,6 @@ This repository contains the full source of the company website: a fast, static,
 ├── robots.txt
 └── CNAME
 ```
-
-## Run locally
-
-No build step or dependencies are needed.
-
-```bash
-git clone https://github.com/karthikcm17/<repository-name>.git
-cd <repository-name>
-python -m http.server 8000
-```
-
-Then open [http://localhost:8000](http://localhost:8000).
-
 ## Deployment
 
 The site is deployed with **GitHub Pages** from the `main` branch. The `CNAME` file maps it to `tech.mathurauniverse.com`.
