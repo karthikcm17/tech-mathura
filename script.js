@@ -14,7 +14,7 @@
 
   /* ---- Google Sheets: paste your Apps Script Web App URL between the quotes ----
      It looks like https://script.google.com/macros/s/XXXXXXXX/exec  (see README, step-by-step) */
-  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwRx_qkfiChi1zdLDxTKNVGlHsUmQDzYhwgaFEYQOLCAmgC3v9BqOOVSib1U9u9ZP5F/exec';
+  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyWHSBB0jnYbjtN_UVEe8GdKQNo24YoMrgW2lHLCvw6IxwhaU3qoblLddfCU0FQIifv/exec';
 
   var root = document.documentElement;
   var isDesk = function () { return window.innerWidth > 1024; };
@@ -288,6 +288,78 @@
       });
     });
 
+    // step-by-step enquiry (contact page)
+    document.querySelectorAll('form[data-wizard]').forEach(function (form) {
+      var steps = form.querySelectorAll('.wz-step'), N = steps.length, cur = 1;
+      var goBtns = form.querySelectorAll('[data-wz-go]'), back = form.querySelector('[data-wz-back]');
+      var lbl = form.querySelector('[data-wz-lbl]'), num = form.querySelector('[data-wz-n]');
+      // option tiles, budget cards and timeline chips
+      form.querySelectorAll('[data-choice]').forEach(function (g) {
+        var input = form.querySelector('input[name=' + g.getAttribute('data-choice') + ']'), multi = g.hasAttribute('data-multi');
+        g.querySelectorAll('[data-val]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            if (multi) b.classList.toggle('sel');
+            else {
+              var was = b.classList.contains('sel');
+              g.querySelectorAll('[data-val]').forEach(function (x) { x.classList.remove('sel'); });
+              if (!was || g.getAttribute('data-choice') === 'budget') b.classList.add('sel');   // budget always keeps one choice
+            }
+            g.querySelectorAll('[data-val]').forEach(function (x) { x.setAttribute('aria-pressed', x.classList.contains('sel')); });
+            input.value = Array.prototype.map.call(g.querySelectorAll('.sel'), function (x) { return x.getAttribute('data-val'); }).join(', ');
+            var er = form.querySelector('[data-err=' + g.getAttribute('data-choice') + ']'); if (er) er.textContent = '';
+          });
+        });
+      });
+      var setErr = function (inp, msg) { var w = inp.closest('.fx'); if (!w) return; w.classList.toggle('err', !!msg); var e = w.querySelector('.fx-err'); if (e) e.textContent = msg || ''; };
+      form.querySelectorAll('.fx input').forEach(function (inp) { inp.addEventListener('input', function () { setErr(inp, ''); }); });
+      var check = function (n) {
+        var step = steps[n - 1], bad = null;
+        if (step.querySelector('[data-choice=project]') && !form.querySelector('input[name=project]').value) {
+          form.querySelector('[data-err=project]').textContent = 'Please choose at least one option.'; return step.querySelector('.opt');
+        }
+        step.querySelectorAll('.fx input').forEach(function (inp) {
+          var v = inp.value.trim(), msg = '';
+          if (inp.required && v.length < 2) msg = 'This field is required.';
+          else if (inp.type === 'tel' && v && v.replace(/\D/g, '').length < 10) msg = 'Enter a valid 10-digit phone number.';
+          else if (inp.type === 'email' && v && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) msg = 'Enter a valid email address.';
+          setErr(inp, msg); if (msg && !bad) bad = inp;
+        });
+        return bad;
+      };
+      var summary = function () {
+        var box = form.querySelector('[data-sum]'); if (!box) return;
+        var g = function (n) { return form.querySelector('input[name=' + n + ']').value; };
+        var items = [['Project', g('project')], ['Budget', g('budget')], ['Start', g('timeline')], ['Name', g('name')]];
+        box.innerHTML = items.filter(function (x) { return x[1]; }).map(function (x) { return '<span><em>' + x[0] + ':</em> ' + x[1].replace(/</g, '&lt;') + '</span>'; }).join('');
+      };
+      var show = function (n, dir) {
+        cur = n;
+        steps.forEach(function (st, i) { st.classList.toggle('on', i === n - 1); st.classList.toggle('back', dir < 0); });
+        goBtns.forEach(function (b) { var k = +b.getAttribute('data-wz-go'); b.classList.toggle('on', k === n); b.classList.toggle('done', k < n); });
+        if (back) back.hidden = n === 1;
+        if (lbl) lbl.textContent = n === N ? 'Send enquiry' : 'Continue';
+        if (num) num.textContent = n;
+        if (n === N) summary();
+        var top = form.getBoundingClientRect().top;
+        if (top < 70 || top > window.innerHeight * .6) window.scrollTo({ top: window.scrollY + top - 100, behavior: 'smooth' });
+      };
+      form._wz = {
+        cur: function () { return cur; }, N: N,
+        next: function () { var bad = check(cur); if (bad) { bad.focus(); return; } show(cur + 1, 1); },
+        stepOf: function (el) { return +el.closest('.wz-step').getAttribute('data-step'); },
+        check: check, show: show
+      };
+      if (back) back.addEventListener('click', function () { if (cur > 1) show(cur - 1, -1); });
+      goBtns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var k = +b.getAttribute('data-wz-go');
+          if (k < cur) return show(k, -1);
+          for (var i = cur; i < k; i++) { var bad = check(i); if (bad) { show(i, 1); bad.focus(); return; } }
+          show(k, 1);
+        });
+      });
+    });
+
     // forms
     document.querySelectorAll('form[data-form]').forEach(function (form) {
       // live validation styling
@@ -298,7 +370,11 @@
       });
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var bad = null;
+        var bad = null, wz = form._wz;
+        if (wz) {
+          if (wz.cur() < wz.N) { wz.next(); return; }
+          for (var si = 1; si <= wz.N; si++) { bad = wz.check(si); if (bad) { wz.show(si, -1); bad.focus(); return; } }
+        }
         form.querySelectorAll('.fl input[required]').forEach(function (inp) {
           var v = inp.value.trim(), ok = v.length > 1;
           if (inp.type === 'tel') ok = v.replace(/\D/g, '').length >= 10;
@@ -317,6 +393,7 @@
         if (!FORM_ENDPOINT) { console.warn('FORM_ENDPOINT is empty: enquiry not saved. See README.'); done(); return; }
         var data = new URLSearchParams(new FormData(form));
         data.delete('website');
+        if (data.has('timeline')) { var tl = data.get('timeline'); data.delete('timeline'); if (tl) data.set('message', 'Start: ' + tl + (data.get('message') ? '\n\n' + data.get('message') : '')); }
         if (data.get('consent')) data.set('consent', 'Yes - agreed to Privacy Policy (' + location.origin + '/privacy.html)');
         data.append('page', document.title);
         data.append('pageUrl', location.href);
