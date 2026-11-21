@@ -1084,3 +1084,7 @@ html:not(.js) .wz-nav [data-wz-back],html:not(.js) .wz-prog{display:none}
  .ef-note{font-size:12px}
  .cta .clines{justify-content:center}
 }
+
+/* links inside text on light sections (e.g. About story: FestiQ, Mathura Overseas) */
+.lt p a,.lt .sub a{color:#2B4FB5;font-weight:600;text-decoration:underline;text-decoration-color:rgba(43,79,181,.4);text-underline-offset:3px;transition:color .25s,text-decoration-color .25s}
+.lt p a:hover,.lt .sub a:hover{color:#0B1F4D;text-decoration-color:#0B1F4D}
