@@ -32,7 +32,7 @@ This repository contains the full source of the company website: a fast, static,
 - **Enquiry forms** with validation, consent capture and spam protection, saved to Google Sheets
 - **Privacy-first**: no cookies, no analytics and no third-party trackers
 - **Accessible**: semantic HTML, keyboard navigation, visible focus states and reduced-motion support
-- **SEO-ready**: canonical URLs, Open Graph previews, structured data, sitemap and robots.txt
+- **Search and AI-ready**: local SEO for Trichy, canonical URLs, Open Graph previews, Schema.org structured data (organisation, services, FAQ, breadcrumbs), sitemap, robots.txt and llms.txt
 
 ## Tech stack
 
@@ -64,10 +64,26 @@ This repository contains the full source of the company website: a fast, static,
 │   ├── favicon.svg
 │   ├── favicon.png
 │   └── og-image.png
+├── 404.html
+├── favicon.ico
 ├── sitemap.xml
 ├── robots.txt
+├── llms.txt               # Plain-language summary for AI assistants
 └── CNAME
 ```
+
+## Run locally
+
+No build step or dependencies are needed.
+
+```bash
+git clone https://github.com/karthikcm17/<repository-name>.git
+cd <repository-name>
+python -m http.server 8000
+```
+
+Then open [http://localhost:8000](http://localhost:8000).
+
 ## Deployment
 
 The site is deployed with **GitHub Pages** from the `main` branch. The `CNAME` file maps it to `tech.mathurauniverse.com`.

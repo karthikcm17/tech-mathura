@@ -951,3 +951,26 @@ html:not(.js) .wz-nav [data-wz-back],html:not(.js) .wz-prog{display:none}
 .foot-logo .logo-img{height:40px}
 @media (max-width:1024px){.nbar .logo:has(.logo-img){padding:0 12px 0 10px}.nbar .logo .logo-img{height:40px}}
 @media (max-width:640px){.nbar .logo:has(.logo-img){padding:0 10px 0 8px}.nbar .logo .logo-img{height:36px}.foot-logo .logo-img{height:36px}}
+
+/* =========================================================
+   Phones: service cards stack while scrolling (like desktop/tablet),
+   compact so every card fits the screen neatly
+   ========================================================= */
+@media (max-width:640px){
+ .sc{position:sticky;top:calc(74px + var(--i) * 9px);transform:scale(var(--sc,1));filter:brightness(var(--br,1));transform-origin:top center;margin-bottom:14px;border-radius:22px;box-shadow:0 -16px 36px -18px rgba(11,31,77,.75)}
+ .sc .scv{min-height:0;height:86px}
+ .sc .scv>*:not(.orbg){scale:.52}
+ .sc .scv .orbg{width:180px;height:180px}
+ .sc .scb{padding:16px 18px 18px;gap:9px}
+ .sc .num b{font-size:11px;padding:4px 8px}
+ .sc .num span{font-size:11px}
+ .sc h3{font-size:20px}
+ .sc p{font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+ .sc .dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 10px}
+ .sc .dl li{font-size:12.5px;line-height:1.35;gap:6px}
+ .sc .dl li::before{width:13px;height:13px;margin-top:1px;box-shadow:inset 0 0 0 4px var(--bl),inset 0 0 0 13px var(--wash)}
+ .sc .dl li:nth-child(n+5){display:none}
+ .sc .tch{padding-top:2px;gap:5px}
+ .sc .tch span{font-size:10.5px;padding:4px 8px}
+ .sc .tch span:nth-child(n+5){display:none}
+}

@@ -14,7 +14,7 @@
 
   /* ---- Google Sheets: paste your Apps Script Web App URL between the quotes ----
      It looks like https://script.google.com/macros/s/XXXXXXXX/exec  (see README, step-by-step) */
-  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyWHSBB0jnYbjtN_UVEe8GdKQNo24YoMrgW2lHLCvw6IxwhaU3qoblLddfCU0FQIifv/exec';
+  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwRx_qkfiChi1zdLDxTKNVGlHsUmQDzYhwgaFEYQOLCAmgC3v9BqOOVSib1U9u9ZP5F/exec';
 
   var root = document.documentElement;
   var isDesk = function () { return window.innerWidth > 1024; };

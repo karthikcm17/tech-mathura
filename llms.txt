@@ -1,0 +1,36 @@
+# Tech Mathura
+
+> Tech Mathura is a website, web application and Android app development company based in Tiruchirappalli (Trichy), Tamil Nadu, India. It is a brand of Mathura Universe and serves startups, small businesses, schools and colleges, clinics, retailers, NGOs and enterprises across India and worldwide.
+
+- Location: Tiruchirappalli (Trichy), Tamil Nadu, India; works with clients remotely across India and abroad
+- Contact: mathurauniverse@gmail.com · +91 78716 55111 (phone and WhatsApp)
+- Pricing: free discovery call, then a fixed, itemised quote before work begins
+- Ownership: clients own 100% of the code, designs, domain, app listing and data
+
+## Services
+
+- [Website development](https://tech.mathurauniverse.com/services.html#websites): business, corporate and personal websites; landing pages; SEO-ready, mobile-first builds (Next.js, React, WordPress)
+- [Web applications](https://tech.mathurauniverse.com/services.html#webapps): portals, dashboards, CRM, ERP and SaaS platforms (React, Angular, Node.js, Django, Laravel, PostgreSQL)
+- [Android app development](https://tech.mathurauniverse.com/services.html#android): native Kotlin + Jetpack Compose or Flutter apps that run on budget phones; Google Play publishing
+- [iOS and cross-platform apps](https://tech.mathurauniverse.com/services.html#ios): Flutter, React Native and Swift; App Store submission
+- [E-commerce](https://tech.mathurauniverse.com/services.html#ecommerce): Shopify, WooCommerce or custom stores with UPI, cards and COD (Razorpay)
+- [UI/UX design](https://tech.mathurauniverse.com/services.html#uiux): research, wireframes, Figma prototypes and design systems
+- [AI integration and automation](https://tech.mathurauniverse.com/services.html#ai): website and WhatsApp chatbots, document Q&A, workflow automation (OpenAI, Gemini, LangChain)
+- [Maintenance, hosting and SEO](https://tech.mathurauniverse.com/services.html#support): cloud hosting, security updates, backups, monitoring and SEO
+
+## How projects run
+
+Discover (free call, scope, fixed quote) → Design (Figma screens for approval) → Develop (weekly sprints and demos) → Test (real devices, speed, security) → Launch (web hosting, Google Play) → Grow (maintenance, SEO, new features).
+
+## Pages
+
+- [Home](https://tech.mathurauniverse.com/): overview, services, process, technologies, products, FAQ
+- [About](https://tech.mathurauniverse.com/about.html): story, mission, values, who we serve
+- [Services](https://tech.mathurauniverse.com/services.html): all eight services, Android app development, packages, FAQ
+- [Contact](https://tech.mathurauniverse.com/contact.html): enquiry form, phone, WhatsApp and email
+- [Privacy Policy](https://tech.mathurauniverse.com/privacy.html): data practices under India's DPDP Act, 2023
+
+## Products built and run by the team
+
+- [FestiQ](https://festiq-events.netlify.app/): event discovery and booking platform
+- [Mathura Overseas](https://mathuraoverseas.com): MBBS-abroad admissions platform
