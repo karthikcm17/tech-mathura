@@ -11,7 +11,7 @@
 
 - [Website development](https://tech.mathurauniverse.com/services.html#websites): business, corporate and personal websites; landing pages; SEO-ready, mobile-first builds (Next.js, React, WordPress)
 - [Web applications](https://tech.mathurauniverse.com/services.html#webapps): portals, dashboards, CRM, ERP and SaaS platforms (React, Angular, Node.js, Django, Laravel, PostgreSQL)
-- [Android app development](https://tech.mathurauniverse.com/services.html#android): native Kotlin + Jetpack Compose or Flutter apps that run on budget phones; Google Play publishing
+- [Android app development](https://tech.mathurauniverse.com/android.html): native Kotlin + Jetpack Compose or Flutter apps that run on budget phones; Google Play publishing
 - [iOS and cross-platform apps](https://tech.mathurauniverse.com/services.html#ios): Flutter, React Native and Swift; App Store submission
 - [E-commerce](https://tech.mathurauniverse.com/services.html#ecommerce): Shopify, WooCommerce or custom stores with UPI, cards and COD (Razorpay)
 - [UI/UX design](https://tech.mathurauniverse.com/services.html#uiux): research, wireframes, Figma prototypes and design systems
@@ -26,7 +26,9 @@ Discover (free call, scope, fixed quote) → Design (Figma screens for approval)
 
 - [Home](https://tech.mathurauniverse.com/): overview, services, process, technologies, products, FAQ
 - [About](https://tech.mathurauniverse.com/about.html): story, mission, values, who we serve
-- [Services](https://tech.mathurauniverse.com/services.html): all eight services, Android app development, packages, FAQ
+- [Services](https://tech.mathurauniverse.com/services.html): all eight services, packages, FAQ
+- [Android Apps](https://tech.mathurauniverse.com/android.html): native Kotlin and Flutter Android apps, how we build them, Android FAQ
+- [Technologies](https://tech.mathurauniverse.com/technologies.html): full technology stack, how we choose a stack, popular combinations
 - [Contact](https://tech.mathurauniverse.com/contact.html): enquiry form, phone, WhatsApp and email
 - [Privacy Policy](https://tech.mathurauniverse.com/privacy.html): data practices under India's DPDP Act, 2023
 

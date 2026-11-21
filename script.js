@@ -233,7 +233,7 @@
 
     // tabs (tech stack)
     document.querySelectorAll('[data-tabs]').forEach(function (group) {
-      var btns = group.querySelectorAll('[data-tab]'), wrap = group.parentElement;
+      var btns = group.querySelectorAll('[data-tab]'), wrap = group.closest('[data-tabslide]') ? group.closest('[data-tabslide]').parentElement : group.parentElement;
       btns.forEach(function (b) {
         b.addEventListener('click', function () {
           var i = b.getAttribute('data-tab');
@@ -241,6 +241,38 @@
           wrap.querySelectorAll('[data-pane]').forEach(function (p) { p.hidden = p.getAttribute('data-pane') !== i; });
         });
       });
+    });
+
+    // deep link from the home page categories: technologies.html#tab-3 opens that category
+    var tabHash = location.hash.match(/^#tab-(\d+)$/);
+    if (tabHash) {
+      var tb = document.querySelector('[data-tab="' + tabHash[1] + '"]'), st = document.getElementById('stack');
+      if (tb) tb.click();
+      if (st) setTimeout(function () { st.scrollIntoView({ block: 'start' }); }, 30);
+    }
+
+    // technology tabs slider: arrows, drag (mouse) and swipe (touch) on every screen size
+    document.querySelectorAll('[data-tabslide]').forEach(function (wrap) {
+      var bar = wrap.querySelector('.tabs'), prev = wrap.querySelector('[data-tsl="-1"]'), next = wrap.querySelector('[data-tsl="1"]');
+      var upd = function () {
+        var max = bar.scrollWidth - bar.clientWidth, x = bar.scrollLeft;
+        wrap.classList.toggle('fits', max <= 2);
+        wrap.classList.toggle('fade-l', x > 10); wrap.classList.toggle('fade-r', x < max - 10);
+        prev.disabled = x <= 10; next.disabled = x >= max - 10;
+      };
+      prev.addEventListener('click', function () { bar.scrollBy({ left: -bar.clientWidth * .7, behavior: 'smooth' }); });
+      next.addEventListener('click', function () { bar.scrollBy({ left: bar.clientWidth * .7, behavior: 'smooth' }); });
+      bar.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
+      // keep the chosen tab in view
+      bar.querySelectorAll('[data-tab]').forEach(function (b) {
+        b.addEventListener('click', function () { bar.scrollTo({ left: b.offsetLeft - (bar.clientWidth - b.offsetWidth) / 2, behavior: 'smooth' }); });
+      });
+      // drag with a mouse; a drag never counts as a click
+      var down = false, sx = 0, sl = 0, moved = false;
+      bar.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = bar.scrollLeft; });
+      window.addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - sx; if (Math.abs(dx) > 5) { moved = true; bar.classList.add('drag'); } bar.scrollLeft = sl - dx; });
+      window.addEventListener('pointerup', function () { if (!down) return; down = false; bar.classList.remove('drag'); });
+      bar.addEventListener('click', function (e) { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
     });
 
     // FAQ accordion

@@ -974,3 +974,113 @@ html:not(.js) .wz-nav [data-wz-back],html:not(.js) .wz-prog{display:none}
  .sc .tch span{font-size:10.5px;padding:4px 8px}
  .sc .tch span:nth-child(n+5){display:none}
 }
+
+/* =========================================================
+   Final logo lockup: monogram + centred wordmark on the white pill
+   ========================================================= */
+.nbar .logo .logo-img{height:38px}
+.foot-logo .logo-img{height:42px}
+@media (max-width:1024px){.nbar .logo .logo-img{height:38px}}
+@media (max-width:640px){.nbar .logo .logo-img{height:31px}.nbar .logo:has(.logo-img){padding:0 11px 0 9px}.foot-logo .logo-img{height:36px}}
+
+/* =========================================================
+   Technology tabs: the same slider on every screen
+   (arrows + drag on desktop, swipe on touch)
+   ========================================================= */
+.tabs-wrap{position:relative;display:flex;align-items:center;gap:8px;margin:0 0 24px}
+.tabs-wrap .tabs{position:relative;margin:0;flex:1;min-width:0;scroll-behavior:smooth;cursor:grab}
+.tabs-wrap .tabs.drag{cursor:grabbing;scroll-behavior:auto}
+.tabs-wrap.fade-r .tabs{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+.tabs-wrap.fade-l .tabs{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%);mask-image:linear-gradient(90deg,transparent,#000 12%)}
+.tabs-wrap.fade-l.fade-r .tabs{-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.tsl{flex:none;width:46px;height:46px;border-radius:15px;border:1px solid var(--pale);background:var(--ink);color:var(--wash);display:grid;place-items:center;cursor:pointer;transition:background .25s,opacity .25s,transform .25s}
+.tsl:hover:not(:disabled){background:var(--bl);transform:translateY(-1px)}
+.tsl.prev svg{transform:rotate(180deg)}
+.tsl:disabled{opacity:.3;cursor:default}
+.tabs-wrap.fits .tsl{display:none}
+@media (max-width:640px){.tsl{width:40px;height:40px;border-radius:13px}.tabs-wrap{gap:6px}}
+
+/* new pages: two-option comparison + tick lists */
+.lgrid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ck{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.ck li{display:flex;gap:10px;font-size:15px;line-height:1.5;color:var(--primary)}
+.ck li::before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:6px;background:var(--bl);box-shadow:inset 0 0 0 5px var(--bl),inset 0 0 0 18px var(--pale)}
+.lc.dark .ck li{color:#E1E9FA}
+.lc.dark .mono{color:#B8CCFF}
+.lc .mono{color:#2B4FB5}
+@media (max-width:640px){.lgrid.two{grid-template-columns:minmax(0,1fr)}}
+.tabs-wrap .tabs{scroll-padding-inline:6px}
+
+/* =========================================================
+   Home: technology categories overview (full stack on technologies.html)
+   ========================================================= */
+.tcat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tc{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:16px;border-radius:18px;background:var(--wash2);border:1px solid var(--pale);text-decoration:none;color:var(--ink);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s,background .35s}
+.tc:hover{transform:translateY(-4px);background:var(--wash);border-color:var(--blue);box-shadow:0 20px 34px -22px rgba(30,58,138,.6);color:var(--ink)}
+.tc .mg{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-family:Archivo,sans-serif;font-stretch:112%;font-weight:700;font-size:13px;background:var(--primary);color:var(--wash)}
+.tc:nth-child(3n+2) .mg{background:var(--bl)}
+.tc-t{display:grid;gap:3px;min-width:0}
+.tc-t b{font-size:15.5px;display:flex;align-items:center;gap:8px}
+.tc-t b em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 7px;border-radius:999px;background:var(--pale);color:var(--ink)}
+.tc-t small{font-size:12.5px;color:var(--primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tc-go{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--blue);background:var(--wash);transition:transform .35s,background .35s,color .35s}
+.tc:hover .tc-go{background:var(--ink);color:var(--wash);transform:rotate(-45deg)}
+.also a{color:#EEF2FC;text-decoration:none;border-bottom:1px solid rgba(184,204,255,.35)}
+.also a:hover{border-color:#EEF2FC}
+.also a.also-all{font-weight:700;border:0;color:#B8CCFF}
+.sv-how{text-align:center;margin:0;padding:40px 0;position:relative;z-index:3;background:var(--wash)}
+.sv-how a{color:var(--blue);font-weight:700;text-decoration:none}
+@media (max-width:1180px){.tcat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.tcat{grid-template-columns:minmax(0,1fr);gap:8px}.tc{padding:12px 14px;gap:12px}.tc .mg{width:38px;height:38px}}
+
+/* =========================================================
+   Phones: enquiry forms redesigned
+   ========================================================= */
+@media (max-width:640px){
+ /* contact page: short intro → form → quick-contact buttons */
+ .ct2{padding-top:110px !important}
+ .ct2-g{display:flex;flex-direction:column;gap:16px}
+ .ct2-side{display:contents}
+ .ct2-side>.tag{order:1}.ct2-side>.h2{order:2;font-size:28px}.ct2-side>.sub{order:3;font-size:14.5px}
+ .ct2-g>.rv{order:4}
+ .ct2-get{display:none}
+ .cq{order:5;grid-template-columns:repeat(3,minmax(0,1fr));border-radius:18px}
+ .cq-r{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 6px;text-align:center}
+ .cq-r+.cq-r{border-top:0;border-left:1px solid rgba(184,204,255,.14)}
+ .cq-r>svg,.cq-r b{display:none}
+ .cq-r small{font-size:12.5px;color:#EEF2FC;font-weight:600}
+ .cq-i{width:38px;height:38px}
+ .ct2-loc{order:6;justify-content:center;font-size:12.5px;text-align:center}
+ /* the wizard: solid card, compact tiles, buttons always in reach */
+ .wz{background:linear-gradient(170deg,#163079,#0B1F4D 55%);backdrop-filter:none;-webkit-backdrop-filter:none;border-radius:22px;overflow:visible}
+ .wz-top{padding:16px 16px 0}
+ .wz-title{margin-bottom:12px}.wz-title b{font-size:15.5px}.wz-title span{font-size:12px;padding:5px 9px}
+ .wz-prog{gap:5px}.wz-prog button{gap:7px;font-size:10.5px}
+ .wz-step{padding:18px 16px 4px}
+ .wz-step legend{margin-bottom:14px}.wz-step legend b{font-size:21px}.wz-step legend span{font-size:13.5px}
+ .opt-g{gap:8px}
+ .opt{flex-direction:row;align-items:center;gap:10px;padding:10px;min-height:58px;border-radius:15px}
+ .opt-i{width:34px;height:34px;border-radius:10px}
+ .opt-t b{font-size:13.5px;line-height:1.25}
+ .opt-k{display:none}
+ .bud{padding:12px;border-radius:15px}.bud b{font-size:14.5px}.bud small{font-size:11.5px}
+ .wz-sub{margin-top:18px}.wz-sub>b{font-size:14px}
+ .wchip{min-height:40px;padding:0 13px;font-size:13px}
+ .fx-g{gap:12px}.fx>label{font-size:13px}.fx input{height:50px;font-size:15px}
+ .fx textarea{min-height:110px}
+ .wz-nav{position:sticky;bottom:0;z-index:5;margin-top:14px;padding:14px 16px calc(14px + env(safe-area-inset-bottom));border-top:1px solid rgba(184,204,255,.14);background:linear-gradient(180deg,rgba(11,31,77,.92),#0B1F4D);border-radius:0 0 22px 22px}
+ .wz-back{min-height:50px;padding:0 14px}.wz-next{min-height:50px}
+ /* quick enquiry (other pages): solid card, wrapping options, compact actions */
+ .eform{background:linear-gradient(170deg,#163079,#0B1F4D 55%);backdrop-filter:none;-webkit-backdrop-filter:none;padding:18px;gap:14px;border-radius:22px}
+ .eform .pills{flex-wrap:wrap;overflow:visible;margin-right:0;padding-right:0;gap:7px}
+ .eform .pill{min-height:38px;padding:0 13px;font-size:13px}
+ .ef-l{font-size:13px}
+ .fl input{height:54px;font-size:15px}
+ .ef-ok{font-size:12.5px;padding:11px 12px}
+ .ef-act{grid-template-columns:minmax(0,1fr) 56px;gap:8px}
+ .ef-act .btn{min-height:52px}
+ .ef-act .b-wa{font-size:0;padding:0;gap:0}
+ .ef-act .b-wa svg{width:22px;height:22px}
+ .ef-note{font-size:12px}
+ .cta .clines{justify-content:center}
+}

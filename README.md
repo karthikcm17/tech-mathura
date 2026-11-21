@@ -20,7 +20,9 @@ This repository contains the full source of the company website: a fast, static,
 |---|---|
 | `index.html` | Home: services overview, what we build, process, technologies, products, FAQ, quick enquiry |
 | `about.html` | Story, mission and vision, values, why choose us, who we serve |
-| `services.html` | Eight services, Android app development, packages, service FAQ |
+| `services.html` | Eight services, packages, service FAQ |
+| `android.html` | Android app development: features, native vs cross-platform, process, FAQ |
+| `technologies.html` | Full technology stack, how we choose a stack, popular combinations |
 | `contact.html` | Contact details, full project enquiry form, next steps |
 | `privacy.html` | Privacy Policy and Disclaimer, aligned with India's DPDP Act, 2023 |
 
@@ -60,7 +62,8 @@ This repository contains the full source of the company website: a fast, static,
 ├── three-LICENSE.txt
 ├── google-apps-script.gs  # Enquiry form backend (Google Apps Script)
 ├── assets/
-│   ├── logo.png
+│   ├── logo.png           # Nav lockup (monogram + wordmark)
+│   ├── logo-full.png      # Footer and documents
 │   ├── favicon.svg
 │   ├── favicon.png
 │   └── og-image.png
