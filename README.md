@@ -2,9 +2,9 @@
 
 **Websites & Android apps, built for everyone.**
 
-The official website of **Tech Mathura**, a web and Android app development brand of **Mathura Universe**, based in Tiruchirappalli, Tamil Nadu, India.
+The official website of **Tech Mathura**, a web and Android app development brand of **Mathura One Global**, based in Tiruchirappalli, Tamil Nadu, India.
 
-🌐 **Live:** [tech.mathurauniverse.com](https://tech.mathurauniverse.com)
+🌐 **Live:** [tech.mathuraone.com](https://tech.mathuraone.com)
 
 ---
 
@@ -89,7 +89,7 @@ Then open [http://localhost:8000](http://localhost:8000).
 
 ## Deployment
 
-The site is deployed with **GitHub Pages** from the `main` branch. The `CNAME` file maps it to `tech.mathurauniverse.com`.
+The site is deployed with **GitHub Pages** from the `main` branch. The `CNAME` file maps it to `tech.mathuraone.com`.
 
 ## Contact
 
@@ -99,6 +99,6 @@ The site is deployed with **GitHub Pages** from the `main` branch. The `CNAME` f
 
 ## License
 
-© 2026 Mathura Universe. All rights reserved.
+© 2026 Mathura One Global. All rights reserved.
 
 The website content, design, logo and brand assets are proprietary and may not be copied or reused without permission. Three.js is used under the MIT License (see `three-LICENSE.txt`).

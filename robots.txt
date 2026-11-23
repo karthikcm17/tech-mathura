@@ -1,4 +1,4 @@
-# Tech Mathura — tech.mathurauniverse.com
+# Tech Mathura — tech.mathuraone.com
 # Search engines and AI assistants are welcome to read and cite this site.
 
 User-agent: *
@@ -17,4 +17,4 @@ User-agent: Google-Extended
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://tech.mathurauniverse.com/sitemap.xml
+Sitemap: https://tech.mathuraone.com/sitemap.xml
